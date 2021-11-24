@@ -1,7 +1,7 @@
 import { VideoCategory } from "./VideoCategory";
 
 export interface VideoLink {
-    iD: string;
+    id: string;
     link: string;
     category: VideoCategory;
 }

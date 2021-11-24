@@ -1,0 +1,11 @@
+<form [formGroup]="categoryForm" novalidate (ngSubmit)="onSubmit()" class="form-struct">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="Category name" formControlName="name">
+        <mat-error *ngIf="categoryForm.controls['name'].hasError('required')">
+            categoryForm is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <button [disabled]="false" mat-raised-button color="primary" type="submit">Done</button>
+    <!-- {{LoginErrorMessege}} -->
+</form>

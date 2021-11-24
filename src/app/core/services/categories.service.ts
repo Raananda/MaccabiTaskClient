@@ -13,40 +13,28 @@ const httpOptions = {
 @Injectable({
     providedIn: 'root'
 })
-export class VideosService {
+export class CategoryService {
 
 
     constructor(private http: HttpClient) { }
 
 
-    GetAllVideos(): Observable<any> {
-        return this.http.get<any>("api/VideoLinks")
+    GetAll(): Observable<any> {
+        return this.http.get<any>("api/VideoCategories")
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    PostVideoLink(data: any): Observable<any> {
-        return this.http.post<any>("api/VideoLinks", data, httpOptions)
+    PostCategory(data: any): Observable<any> {
+        return this.http.post<any>("api/VideoCategories", data, httpOptions)
             .pipe(
                 catchError(this.handleError)
             );
     }
 
-    PutVideoLink(data: any): Observable<any> {
-        return this.http.put<any>("api/VideoLinks", data, httpOptions)
-            .pipe(
-                catchError(this.handleError)
-            );
-    }
+  
 
-    deleteVideoLink(id: string): Observable<unknown> {
-        const url = `api/VideoLinks?id=${id}`; 
-        return this.http.delete(url, httpOptions)
-          .pipe(
-            catchError(this.handleError)
-          );
-      }
     private handleError(error: HttpErrorResponse) {
         if (error.status === 0) {
             // A client-side or network error occurred. Handle it accordingly.

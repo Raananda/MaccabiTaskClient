@@ -1,0 +1,26 @@
+<form [formGroup]="videoLinkForm" novalidate (ngSubmit)="onSubmit()" class="form-struct">
+    <mat-form-field class="full-width">
+        <input matInput placeholder="link" formControlName="link">
+        <mat-error *ngIf="videoLinkForm.controls['link'].hasError('required')">
+            Link is <strong>required</strong>
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="full-width">
+        <mat-label>Category</mat-label>
+        <input type="text"
+               placeholder="Pick one"
+               aria-label="Category"
+               matInput
+               formControlName="category"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.name">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+
+    <button [disabled]="submitBtnFlag" mat-raised-button color="primary" type="submit">Done</button>
+    <!-- {{LoginErrorMessege}} -->
+</form>
